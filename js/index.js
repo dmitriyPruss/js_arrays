@@ -1,3 +1,5 @@
+'use strict'
+
 // 0 Создать числовой массив и проинициализировать его (*случайными числами).
 const arr = [];
 for(let i = 0; i <= 15; i++) {
@@ -79,4 +81,47 @@ function powToThree(i) {
     return Math.pow(i, 3);
 };
 
-// *12 Прописать для MyArray метод unshift.
+// *12 Прописать для MyArray метод unshift
+const myArray = {
+    0: 1,
+    1: 2,
+    2: 3,
+    3: 4,
+    4: 5,
+    length: 5,
+    pop() {
+        if(this.length === 0) {
+            return;
+        }
+        const lastItem = this[this.length-1]
+        delete this[--this.length];
+        return lastItem;
+    },
+    push(item) {
+        this[this.length] = item;
+        return ++this.length;
+    },
+    shift() {
+        if ( this.length === 0 ) {
+            return;
+        }
+        const fistItem = this[0];
+        for(let i = 0; i < this.length - 1; i++) {
+            this[i] = this[i+1];
+        }
+        delete this[--this.length];
+        return fistItem;
+    },
+    unshift(item) {
+        for(let i = this.length; i >= 0; i--) {
+            i === 0 ? this[0] = item : this[i] = this[i - 1];
+        };
+        return ++this.length;
+    }
+};
+myArray.unshift(333);
+console.log(myArray);
+
+myArray.unshift(5444443);
+console.log(myArray);
+
