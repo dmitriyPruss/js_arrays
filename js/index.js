@@ -1,127 +1,175 @@
 'use strict'
 
 // 0 Создать числовой массив и проинициализировать его (*случайными числами).
-const arr = [];
-for(let i = 0; i <= 15; i++) {
-    arr.push(Math.round(Math.random() * 4));
-};
-console.table(arr);
+console.group('Task 0');
+    const arr = [];
+    for(let i = 0; i < 20; i++) {
+        arr.push(Math.round(Math.random() * 4));
+    };
+    console.table(arr);
+console.groupEnd();
 
 // 1 Удалить последний элемент из массива, добавить по элементу в начало и конец.
-arr.pop();
-console.log(arr);
+console.group('Task 1');
+    arr.pop();
+    arr.push(5);
+    arr.unshift(10);
+    console.log(arr);
+console.groupEnd();
 
-arr.push(5);
-arr.unshift(10);
-console.log(arr);
 // 2 Вывести размер массива.
-console.log('arr.length :>> ', arr.length);
+console.group('Task 2');
+    console.log('arr.length :>> ', arr.length);
+console.groupEnd();
+
 // 3 Вывести элементы с четными индексами.
-for(let i = 0; i < arr.length; i++) {
-    i % 2 === 0 ? console.log(`arr[${i}] - ${arr[i]}`) : '';
-};
+console.group('Task 3');
+    for(let i = 0; i < arr.length; i++) {
+        if (i % 2 === 0) {
+            console.log(`arr[${i}] - ${arr[i]}`);
+        };
+    };
+console.groupEnd();
+
 // 4 Вывести только четные элементы (четные числа делятся на 2 без остатка).
-for(let i = 0; i < arr.length; i++) {
-    arr[i] % 2 === 0 ? console.log(`arr[${i}] - ${arr[i]}`) : '';
-};
+console.group('Task 4');
+    for(let i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 === 0) {
+            console.log(`arr[${i}] - ${arr[i]}`);
+        };
+    };
+console.groupEnd();
+
 // 5 Вывести индексы нулевых элементов (элемент равен нулю).
 // 6 Подсчитать количество нулевых элементов.
-let zeroCounter = 0;
-for(let i = 0; i < arr.length; i++) {
-   if (arr[i] === 0) {
-       console.log(`arr[${i}] - ${arr[i]}`);
-       zeroCounter++;
-   };
-};
-console.log('zeroCounter :>> ', zeroCounter);
+console.group('Task 5 && 6');
+    let zeroCounter = 0;
+    for(let i = 0; i < arr.length; i++) {
+        if (arr[i] === 0) {
+            console.log(`arr[${i}] - ${arr[i]}`);
+            zeroCounter++;
+        };
+    };
+    console.log('zeroCounter :>> ', zeroCounter);
+console.groupEnd();
 
 // 7 Получить новый массив из заданного, который будет содержать только положительные 
 // числа (-1, 5, 0, 9, -10 => 5, 9).
-const arr2 = [-1, 5, 0, 9, -10]; 
-const positiveArr = arr2.filter(sortElems);
-console.log('positiveArr :>> ', positiveArr);
+console.group('Task 7');
+    const arr2 = [-1, 5, 0, 9, -10]; 
+    const positiveArr = arr2.filter(sortElems);
+    console.log('positiveArr :>> ', positiveArr);
 
-function sortElems(i) {
-    return i > 0;
-};
+    function sortElems(i) {
+        return i > 0;
+    };
+console.groupEnd();
+
 // 8 Получить новый массив их заданного, который будет содержать все элементы исходного, 
 // возведенные в квадрат (-1, 5, 0, 9, -10 => 1, 25, 0, 81, 100).
-const powTwoArr = arr2.map(powToTwo);
-console.log('powTwoArr :>> ', powTwoArr);
+console.group('Task 8');
+    const powTwoArr = arr2.map(powToTwo);
+    console.log('powTwoArr :>> ', powTwoArr);
+    
+    function powToTwo(i) {
+        return i ** 2;
+    };
+console.groupEnd();
 
-function powToTwo(i) {
-    return i ** 2;
-};
 // 9 Проверить, являются ли все елементы массива положительными числами 
 // (* или в принципе числами).
-console.log('arr2.every(isMoreZero) :>> ', arr2.every(isMoreZero));
-console.log('arr2.every(isNumber) :>> ', arr2.every(isNumber));
+console.group('Task 9');
+    console.log('arr2.every(isMoreZero) :>> ', arr2.every(isMoreZero));
+    console.log('arr2.every(isNumber) :>> ', arr2.every(isNumber));
 
-function isMoreZero(i) {
-    return i > 0;
-};
-
-function isNumber(i) {
-    return !Number.isNaN(i);
-};
-// 10 Проверить, есть ли в массиве хоть один отрицательный элемент.
-console.log('arr2.some(isLessZero) :>> ', arr2.some(isLessZero));
-
-function isLessZero(i, index) {
-    if (i < 0) {
-        console.log(`arr2[${index}] :>> `, i);
+    function isMoreZero(i) {
+        return i > 0;
     };
-    return i < 0;
-};
-// 11 Вывести элементы массива, возведенные в куб.
-const powThreeArr = arr2.map(powToThree);
-console.log('powThreeArr :>> ', powThreeArr);
 
-function powToThree(i) {
-    return Math.pow(i, 3);
-};
+    function isNumber(i) {
+        return !Number.isNaN(i);
+    };
+console.groupEnd();
+
+// 10 Проверить, есть ли в массиве хоть один отрицательный элемент.
+console.group('Task 10');
+    console.log('arr2.some(isLessZero) :>> ', arr2.some(isLessZero));
+
+    function isLessZero(i, index) {
+        if (i < 0) {
+            console.log(`arr2[${index}] :>> `, i);
+        };
+        return i < 0;
+    };
+console.groupEnd();
+
+// 11 Вывести элементы массива, возведенные в куб.
+console.group('Task 11');
+    const powThreeArr = arr2.map(powToThree);
+    console.log('powThreeArr :>> ', powThreeArr);
+
+    function powToThree(i) {
+        return Math.pow(i, 3);
+    };
+console.groupEnd();
 
 // *12 Прописать для MyArray метод unshift
-const myArray = {
-    0: 1,
-    1: 2,
-    2: 3,
-    3: 4,
-    4: 5,
-    length: 5,
-    pop() {
+console.groupCollapsed('Task 12 - method unshift');
+    function MyArray() {
+        if (!new.target) {
+          return new MyArray();
+        };
+        this.length = 0;
+    };
+      
+    const myArrayProto = new MyArray();
+
+    myArrayProto.pop = function() {
         if(this.length === 0) {
             return;
-        }
+        };
         const lastItem = this[this.length-1]
         delete this[--this.length];
         return lastItem;
-    },
-    push(item) {
+    };
+    myArrayProto.push = function(item) {
         this[this.length] = item;
         return ++this.length;
-    },
-    shift() {
+    };
+    myArrayProto.shift = function() {
         if ( this.length === 0 ) {
-            return;
+          return;
         }
         const fistItem = this[0];
         for(let i = 0; i < this.length - 1; i++) {
-            this[i] = this[i+1];
+          this[i] = this[i+1];
         }
         delete this[--this.length];
         return fistItem;
-    },
-    unshift(item) {
+    };
+    myArrayProto.unshift = function(item) {
         for(let i = this.length; i >= 0; i--) {
             i === 0 ? this[0] = item : this[i] = this[i - 1];
         };
         return ++this.length;
-    }
-};
-myArray.unshift(333);
-console.log(myArray);
+    };
+      
+    MyArray.prototype = myArrayProto;
+      
+    const myArr1 = new MyArray();
+    
+    for(let i = 0; i <= 4; i++) {
+        myArr1.push(i);
+    };
+    console.log(myArr1);
 
-myArray.unshift(5444443);
-console.log(myArray);
+    myArr1.unshift(333);
+    console.log(myArr1);
+
+    myArr1.unshift(5444443);
+    console.log(myArr1);
+console.groupEnd();
+
+
+
 
