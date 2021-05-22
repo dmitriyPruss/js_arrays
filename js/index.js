@@ -24,10 +24,9 @@ console.groupEnd();
 
 // 3 Вывести элементы с четными индексами.
 console.group('Task 3');
-    for(let i = 0; i < arr.length; i++) {
-        if (i % 2 === 0) {
-            console.log(`arr[${i}] - ${arr[i]}`);
-        };
+    for(let i = 0; i < arr.length; i++) {       
+        console.log(`arr[${i}] - ${arr[i]}`);
+        i++;
     };
 console.groupEnd();
 
@@ -57,11 +56,11 @@ console.groupEnd();
 // числа (-1, 5, 0, 9, -10 => 5, 9).
 console.group('Task 7');
     const arr2 = [-1, 5, 0, 9, -10]; 
-    const positiveArr = arr2.filter(sortElems);
+    const positiveArr = arr2.filter(getPositive);
     console.log('positiveArr :>> ', positiveArr);
 
-    function sortElems(i) {
-        return i > 0;
+    function getPositive(item) {
+        return item > 0;
     };
 console.groupEnd();
 
@@ -105,11 +104,10 @@ console.groupEnd();
 
 // 11 Вывести элементы массива, возведенные в куб.
 console.group('Task 11');
-    const powThreeArr = arr2.map(powToThree);
-    console.log('powThreeArr :>> ', powThreeArr);
+    arr2.forEach(powToThree);
 
-    function powToThree(i) {
-        return Math.pow(i, 3);
+    function powToThree(i, index) {
+        console.log(`arr[${index}] = ${ Math.pow(i, 3) }` ); 
     };
 console.groupEnd();
 
@@ -149,8 +147,9 @@ console.groupCollapsed('Task 12 - method unshift');
     };
     myArrayProto.unshift = function(item) {
         for(let i = this.length; i >= 0; i--) {
-            i === 0 ? this[0] = item : this[i] = this[i - 1];
+            this[i] = this[i - 1];
         };
+        this[0] = item;
         return ++this.length;
     };
       
